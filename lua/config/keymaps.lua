@@ -3,8 +3,8 @@
 -- Add any additional keymaps here
 local map = vim.keymap
 
-map.set({ 'n', 'x' }, "J", "5j", { desc = "Quick down" })
-map.set({ 'n', 'x' }, "K", "5k", { desc = "Quick up" })
+map.set({ "n", "x" }, "J", "5j", { desc = "Quick down" })
+map.set({ "n", "x" }, "K", "5k", { desc = "Quick up" })
 map.set("n", ";", ":", { desc = "Open panel" })
 map.set("n", "S", "<cmd>w<cr>", { desc = "Save file" })
 map.set("n", "Q", "<cmd>q<cr>", { desc = "Exit file" })
@@ -16,5 +16,6 @@ map.set("n", "<leader>r", function()
   require("refactoring").select_refactor()
 end, { desc = "Select Refactor" })
 
+map.set({ "i", "x" }, "jj", "<esc>", { desc = "Replace esc" })
 
-map.set({ 'i', 'x' }, "jj", "<esc>", { desc = "Replace esc" })
+map.set("n", "<leader>ce", "<cmd>RunCpp<cr>", { desc = "Run Cpp" })
