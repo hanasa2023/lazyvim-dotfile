@@ -1,5 +1,6 @@
 return {
   "stevearc/conform.nvim",
+  enable = false,
   optional = true,
   opts = {
     lsp_fallback = true,

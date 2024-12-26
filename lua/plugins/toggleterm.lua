@@ -1,6 +1,7 @@
 return {
-  'akinsho/toggleterm.nvim',
+  "akinsho/toggleterm.nvim",
   lazy = false,
   version = "*",
-  opts = { --[[ things you want to change go here]] }
+  opts = { --[[ things you want to change go here]]
+  },
 }

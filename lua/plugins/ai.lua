@@ -30,7 +30,7 @@ return {
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  -- build = "make",
+  build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "stevearc/dressing.nvim",
@@ -39,7 +39,8 @@ return {
     --- The below dependencies are optional,
     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "echasnovski/mini.icons", -- or echasnovski/mini.icons
-    "github/copilot.vim", -- for providers='copilot'
+    -- "github/copilot.vim", -- for providers='copilot'
+    "zbirenbaum/copilot.lua",
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
