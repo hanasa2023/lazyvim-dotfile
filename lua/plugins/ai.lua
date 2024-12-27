@@ -11,7 +11,7 @@ return {
       -- endpoint = "https://api.githubcopilot.com/",
       model = "claude-3.5-sonnet",
       temperature = 0,
-      max_tokens = 4096,
+      -- max_tokens = 600000,
     },
     ual_boost = {
       enabled = true,
@@ -39,8 +39,8 @@ return {
     --- The below dependencies are optional,
     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "echasnovski/mini.icons", -- or echasnovski/mini.icons
-    -- "github/copilot.vim", -- for providers='copilot'
-    "zbirenbaum/copilot.lua",
+    "github/copilot.vim", -- for providers='copilot'
+    -- "zbirenbaum/copilot.lua",
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",

@@ -11,9 +11,6 @@ map.set("n", "Q", "<cmd>q<cr>", { desc = "Exit file" })
 map.set("n", "<A-3>", "<cmd>ToggleTerm direction=float<cr>", { desc = "Open float term" })
 map.set("n", "<leader><cr>", "<cmd>nohl<cr>", { desc = "nohl" })
 -- map.set("n", "<leader>h", "<cmd>ToggleTerm<cr>", { desc = "Open horizontal term" })
--- map.set("n", "<leader>r", function()
---   require("refactoring").select_refactor()
--- end, { desc = "Select Refactor" })
 
 map.set({ "i", "x" }, "jj", "<esc>", { desc = "Replace esc" })
 
