@@ -14,7 +14,7 @@ return {
     },
     openai = {
       endpoint = "https://api.deepseek.com/v1",
-      model = "deepseek-chat",
+      model = "deepseek-reasponser",
       temperature = 0,
       max_tokens = 8142,
     },
