@@ -13,7 +13,7 @@ return {
   },
   opts = {
     -- configuration goes here
-    lang = "cpp",
+    lang = "python3",
     cn = {
       enabled = true, ---@type boolean
       translator = true, ---@type boolean
@@ -35,7 +35,11 @@ return {
 
     injector = {
       ["python3"] = {
-        before = true,
+        before = {
+          "from typing import List",
+          "from bisect import bisect_left, bisect_right",
+          "from functools import cache",
+        },
       },
       ["cpp"] = {
         before = {
