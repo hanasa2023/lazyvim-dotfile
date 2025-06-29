@@ -1,70 +1,69 @@
 return {
   "yetone/avante.nvim",
-  event = "VeryLazy",
-  lazy = false,
-  version = "*", -- set this if you want to always pull the latest change
-  opts = {
-    ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-    provider = "copilot",
-    auto_suggestions_provider = "openai",
-    copilot = {
-      model = "claude-3.5-sonnet",
-      temperature = 0,
-      max_tokens = 600000,
-    },
-    openai = {
-      endpoint = "https://api.deepseek.com/v1",
-      model = "deepseek-reasponser",
-      temperature = 0,
-      max_tokens = 8142,
-    },
-    ual_boost = {
-      enabled = true,
-      first_provider = "copilot",
-      second_provider = "claude",
-      prompt = "Always respond in 中文",
-      timeout = 120000, -- Timeout in milliseconds
-    },
-    behaviour = {
-      auto_suggestions = false, -- Experimental stage
-      auto_set_highlight_group = true,
-      auto_set_keymaps = true,
-      auto_apply_diff_after_generation = false,
-      support_paste_from_clipboard = false,
-      minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
-    },
-  },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  event = "VeryLazy",
+  version = false,
+  ---@module 'avante'
+  ---@type avante.Config
+  opts = {
+    provider = "copilot",
+    providers = {
+      gemini = {
+        endpoint = "https://generativelanguage.googleapis.com/v1beta",
+        model = "gemini-2.5-flash",
+        timeout = 30000, -- Timeout in milliseconds
+        extra_request_body = {
+          temperature = 0.75,
+          max_tokens = 20480,
+        },
+      },
+    },
+    system_prompt = function()
+      local hub = require("mcphub").get_hub_instance()
+      return hub and hub:get_active_servers_prompt() or ""
+    end,
+    custom_tools = function()
+      return {
+        require("mcphub.extensions.avante").mcp_tool(),
+      }
+    end,
+  },
   dependencies = {
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
-    --- The below dependencies are optional,
-    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-    "echasnovski/mini.icons", -- or echasnovski/mini.icons
-    "github/copilot.vim", -- for providers='copilot'
-    -- "zbirenbaum/copilot.lua",
+    --- 以下依赖项是可选的，
+    "echasnovski/mini.pick", -- 用于文件选择器提供者 mini.pick
+    "nvim-telescope/telescope.nvim", -- 用于文件选择器提供者 telescope
+    "hrsh7th/nvim-cmp", -- avante 命令和提及的自动完成
+    "ibhagwan/fzf-lua", -- 用于文件选择器提供者 fzf
+    "nvim-tree/nvim-web-devicons", -- 或 echasnovski/mini.icons
     {
-      -- support for image pasting
+      "zbirenbaum/copilot.lua", -- 用于 providers='copilot'
+      event = "InsertEnter",
+      config = function()
+        require("copilot").setup({})
+      end,
+    },
+    "ravitemer/mcphub.nvim", -- mcphub
+    {
+      -- 支持图像粘贴
       "HakonHarnes/img-clip.nvim",
       event = "VeryLazy",
       opts = {
-        -- recommended settings
+        -- 推荐设置
         default = {
           embed_image_as_base64 = false,
           prompt_for_file_name = false,
           drag_and_drop = {
             insert_mode = true,
           },
-          -- required for Windows users
+          -- Windows 用户必需
           use_absolute_path = true,
         },
       },
     },
     {
-      -- Make sure to set this up properly if you have lazy=true
+      -- 如果您有 lazy=true，请确保正确设置
       "MeanderingProgrammer/render-markdown.nvim",
       opts = {
         file_types = { "markdown", "Avante" },

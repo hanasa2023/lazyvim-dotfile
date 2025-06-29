@@ -211,6 +211,7 @@ return {
                 return msg
               end,
             },
+            { require("mcphub.extensions.lualine") },
             {
               function()
                 local msg = "No Active Lsp"
