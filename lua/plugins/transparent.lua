@@ -3,7 +3,7 @@ return {
   lazy = false,
   config = function()
     require("transparent").setup({ -- Optional, you don't have to run setup.
-      groups = {                  -- table: default groups
+      groups = { -- table: default groups
         "Normal",
         "NormalNC",
         "Comment",
@@ -34,7 +34,7 @@ return {
         "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
         "WinBar",
         "WinBarNC",
-      },                 -- table: additional groups that should be cleared
+      }, -- table: additional groups that should be cleared
       exclude_groups = {}, -- table: groups you don't want to clear
     })
 

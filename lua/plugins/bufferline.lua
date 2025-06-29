@@ -16,10 +16,13 @@ return {
       offsets = {
         {
           filetype = "neo-tree",
-          text = "󰴈 Hanasaki",
+          text = "🌸 Hanasaki",
           highlight = "Directory",
           text_align = "center",
           spearator = false,
+        },
+        {
+          filetype = "snacks_layout_box",
         },
       },
     },
